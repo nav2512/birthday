@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Harshu's Birthday Scroll</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Raleway', sans-serif;
+      background: linear-gradient(to bottom, #ffdee9, #b5fffc);
+      scroll-behavior: smooth;
+    }
+    section {
+      min-height: 100vh;
+      padding: 4rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease-out;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    h1, h2, p {
+      color: #333;
+      margin-bottom: 1rem;
+    }
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+      color: #d63384;
+    }
+    .final {
+      font-size: 2.5rem;
+      color: #fff;
+      background: url('flower.png') center/cover no-repeat, linear-gradient(to right, #ff9a9e, #fad0c4);
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      font-family: 'Great Vibes', cursive;
+      position: relative;
+    }
+    .final::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 20px;
+    }
+    .final-text {
+      position: relative;
+      z-index: 1;
+      background-color: rgba(0, 0, 0, 0.4);
+      padding: 1.5rem;
+      border-radius: 12px;
+      font-size: 2rem;
+      font-family: 'Great Vibes', cursive;
+      color: #fff;
+      text-shadow: 1px 1px 4px #000;
+    }
+    .highlighted-message {
+      font-family: 'Raleway', sans-serif;
+      font-size: 1.4rem;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      color: #800040;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      max-width: 700px;
+      line-height: 1.8;
+      font-weight: 600;
+    }
+    .highlighted-message span {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2rem;
+      color: #800040;
+    }
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <audio id="bg-music" autoplay loop>
+    <source src="Pretty Little Baby - PagalWorld.mp3" type="audio/mpeg" />
+  </audio>
+
+  <section class="fade-in">
+    <h1>To My Cutu Harshu 💖</h1>
+    <p>Since our paths crossed, everything's had a little more color.</p>
+  </section>
+
+  <section class="fade-in">
+    <h2>Our Journey 🌸</h2>
+    <p>From cold chats , ignoring to fights and lovey dovey chats 😂 , our every moment is special 💖</p>
+  </section>
+
+  <section class="fade-in">
+    <h2>What I Admire About You 🕊️</h2>
+    <p>Your great charming and relaxing behaviour and most of all your smirking smile and your two cute eyes, my little kitty 😺<br>
+    you're just… effortlessly cute. Like it’s not even fair. You could be walking around in messy hair and sleepy eyes, and still make hearts do backflips (especially mine).</p>
+  </section>
+
+  <section class="fade-in">
+    <div class="highlighted-message">
+      <span>
+        A very very happy birthday to my Harshu and always smile like this always cause it is one of the best smiles I ever had seen in this world 💎
+      </span>
+    </div>
+  </section>
+
+  <section class="fade-in final">
+    <div class="final-text">
+      🎉 Happy Birthday, Harshu! 💘<br /><img src='flower.png'> </img>
+      Cutest girl in this world.
+    </div>
+  </section>
+
+  <script>
+    const sections = document.querySelectorAll('.fade-in');
+
+    const appearOnScroll = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.2
+    });
+
+    sections.forEach(section => {
+      appearOnScroll.observe(section);
+    });
+
+    document.body.addEventListener('click', () => {
+      const music = document.getElementById('bg-music');
+      music.play().catch(e => console.log("Playback error: ", e));
+    }, { once: true });
+  </script>
+</body>
+</html>
